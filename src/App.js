@@ -17,6 +17,11 @@ const App = () => {
     setContent(event.target.value);
   };
 
+  /*
+   Add download image button
+   Add Scanner page 
+  */
+
   return (
     <div className="app">
       <h1 className="heading">QRCode Generator</h1>
