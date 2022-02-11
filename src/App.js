@@ -6,7 +6,6 @@ const App = () => {
   const [src, setSrc] = useState("");
   const [content, setContent] = useState("");
   useEffect(() => {
-    console.log(src);
     QRCode.toDataURL("I like putting stuff as qr codes.").then(setSrc);
   }, [src]);
 
@@ -18,8 +17,11 @@ const App = () => {
     setContent(event.target.value);
   };
 
+  const setDataUrl = (event) => {
+    event.target.href = src;
+  };
+
   /*
-   Add download image button
    Add Scanner page 
   */
 
@@ -45,6 +47,15 @@ const App = () => {
         <img src={src} alt="a Qr code" />
         <figcaption>Right Click and Save ✌</figcaption>
       </figure>
+      <a
+        href=" "
+        className="button download"
+        download="qr_code_image.png"
+        role="button"
+        onClick={setDataUrl}
+      >
+        Download
+      </a>
     </div>
   );
 };
