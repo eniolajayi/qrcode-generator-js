@@ -6,8 +6,9 @@ const App = () => {
   const [src, setSrc] = useState("");
   const [content, setContent] = useState("");
   useEffect(() => {
+    console.log(src);
     QRCode.toDataURL("I like putting stuff as qr codes.").then(setSrc);
-  }, []);
+  }, [src]);
 
   const onBtnClick = () => {
     QRCode.toDataURL(content).then(setSrc);
@@ -25,7 +26,7 @@ const App = () => {
   return (
     <div className="app">
       <h1 className="heading">QRCode Generator</h1>
-      <label for="content" className="label">
+      <label htmlFor="content" className="label">
         Enter content for qr code:
       </label>
       <textarea
@@ -35,9 +36,8 @@ const App = () => {
         rows="7"
         cols="55"
         onChange={handleChange}
-      >
-        {content}
-      </textarea>
+        value={content}
+      ></textarea>
       <button className="button" type="submit" onClick={onBtnClick}>
         Generate
       </button>
